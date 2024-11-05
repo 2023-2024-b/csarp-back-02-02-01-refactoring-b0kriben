@@ -1,6 +1,6 @@
-﻿using Kreata.Backend.Datas.Enums;
+﻿using Kreta.Shared.Models.Datas.Enums;
 
-namespace Kreata.Backend.Datas.Entities
+namespace Kreta.Shared.Models.Datas.Entities
 {
     public class Student
     {
@@ -13,7 +13,7 @@ namespace Kreata.Backend.Datas.Entities
             SchoolYear = schoolYear;
             SchoolClass = schoolClass;
             EducationLevel = educationLevel;
-            IsWoomen= isWooman;
+            IsWoman = isWooman;
         }
 
         public Student(string firstName, string lastName, DateTime birthsDay, int schoolYear, SchoolClassType schoolClass, string educationLevel, bool isWooman)
@@ -25,7 +25,7 @@ namespace Kreata.Backend.Datas.Entities
             SchoolYear = schoolYear;
             SchoolClass = schoolClass;
             EducationLevel = educationLevel;
-            IsWoomen = isWooman;
+            IsWoman = isWooman;
         }
 
         public Student()
@@ -37,7 +37,7 @@ namespace Kreata.Backend.Datas.Entities
             SchoolYear = 9;
             SchoolClass = SchoolClassType.ClassA;
             EducationLevel = string.Empty;
-            IsWoomen = false;
+            IsWoman = false;
         }
 
         public Guid Id { get; set; }
@@ -47,7 +47,8 @@ namespace Kreata.Backend.Datas.Entities
         public int SchoolYear { get; set; }
         public SchoolClassType SchoolClass { get; set; }
         public string EducationLevel { get; set; }
-        public bool IsWoomen { get; set; }
+        public bool IsWoman { get; set; }
+        public bool IsMan => !IsWoman;
 
         public override string ToString()
         {

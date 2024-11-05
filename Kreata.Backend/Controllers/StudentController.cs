@@ -1,5 +1,5 @@
-﻿using Kreata.Backend.Datas.Entities;
-using Kreata.Backend.Datas.Responses;
+﻿using Kreta.Shared.Models.Datas.Entities;
+using Kreta.Shared.Models.Responses;
 using Kreata.Backend.Repos;
 using Microsoft.AspNetCore.Mvc;
 
