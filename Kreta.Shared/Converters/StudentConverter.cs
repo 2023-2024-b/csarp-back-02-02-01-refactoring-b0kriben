@@ -35,6 +35,14 @@ namespace Kreta.Shared.Converters
             };
         }
 
-        public static List<StudentDto>
+        public static List<StudentDto> GetStudentDtos(List<Student> student)
+        {
+            return student.Select(student => ToDto(student)).ToList();
+        }
+
+        public static List<Student> GetStudents(List<StudentDto> studentDto)
+        {
+            return studentDto.Select(studentDto => ToModel(studentDto)).ToString();
+        }
     }
 }
