@@ -3,9 +3,9 @@ using Kreta.Shared.Models.Datas.Entities;
 
 namespace Kreta.Shared.Converters
 {
-    public class StudentConverter
+    public static class StudentConverter
     {
-        public static StudentDto ToDto(Student student)
+        public static StudentDto ToDto(this Student student)
         {
             return new StudentDto
             {
@@ -20,7 +20,7 @@ namespace Kreta.Shared.Converters
             };
         }
 
-        public static Student ToModel(Student student)
+        public static Student ToModel(this StudentDto student)
         {
             return new Student
             {
@@ -35,14 +35,14 @@ namespace Kreta.Shared.Converters
             };
         }
 
-        public static List<StudentDto> GetStudentDtos(List<Student> student)
+        public static List<StudentDto> GetStudentsDtos(this List<Student> student)
         {
             return student.Select(student => ToDto(student)).ToList();
         }
 
-        public static List<Student> GetStudents(List<StudentDto> studentDto)
+        public static List<Student> GetStudents(this List<StudentDto> studentDtos)
         {
-            return studentDto.Select(studentDto => ToModel(studentDto)).ToString();
+            return studentDtos.Select(studentDto => ToModel(studentDto)).ToList();
         }
     }
 }

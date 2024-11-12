@@ -2,6 +2,8 @@
 using Kreta.Shared.Models.Responses;
 using Kreata.Backend.Repos;
 using Microsoft.AspNetCore.Mvc;
+using Kreta.Shared.Converters;
+using Kreta.Shared.Dtos;
 
 namespace Kreata.Backend.Controllers
 {
@@ -24,7 +26,7 @@ namespace Kreata.Backend.Controllers
             {
                 entity = await _studentRepo.GetBy(id);
                 if (entity!=null) 
-                    return Ok(entity);
+                    return Ok(entity.ToDto());
             }
             return BadRequest("Az adatok elérhetetlenek!");
         }
@@ -37,18 +39,18 @@ namespace Kreata.Backend.Controllers
             if (_studentRepo != null)
             {
                 users = await _studentRepo.GetAll();
-                return Ok(users);
+                return Ok(users.GetStudentsDtos());
             }
             return BadRequest("Az adatok elérhetetlenek!");
         }
 
         [HttpPut()]
-        public async Task<ActionResult> UpdateStudentAsync(Student entity)
+        public async Task<ActionResult> UpdateStudentAsync(StudentDto entity)
         {
             ControllerResponse response = new();
             if (_studentRepo is not null)
             {
-                response = await _studentRepo.UpdateStudentAsync(entity);
+                response = await _studentRepo.UpdateStudentAsync(entity.ToModel());
                 if (response.HasError)
                 {
                     return BadRequest(response);
