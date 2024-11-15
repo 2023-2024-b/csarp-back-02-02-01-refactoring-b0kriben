@@ -32,8 +32,58 @@ namespace Kreata.Backend.Context
                 }
             };
 
+            List<Teacher> teachers = new()
+            {
+                new Teacher
+                {
+                    Id = Guid.NewGuid(),
+                    FirstName="Feri",
+                    LastName="Földrajz",
+                    BirthsDay=new DateTime(1999,01,01),
+                    IsHeadTeacher=true,
+                    IsWoman=false,
+                },
+                new Teacher
+                {
+                    Id = Guid.NewGuid(),
+                    FirstName="Fruzsina",
+                    LastName="Fizika",
+                    BirthsDay=new DateTime(1993,01,01),
+                    IsHeadTeacher=false,
+                    IsWoman=true,
+                }
+            };
+
+            List<Felhasznalo> felhsznalok = new()
+            {
+                new Felhasznalo
+                {
+                    Id = Guid.NewGuid(),
+                    FirstName="Mária",
+                    LastName="Farkas",
+                    BirthsDay=new DateTime(1979,06,01),
+                    IsWoman=false,
+                    Phonenumber="06705463278",
+                    Email="farkasmari@gmail.com"
+                },
+                new Felhasznalo
+                {
+                    Id = Guid.NewGuid(),
+                    FirstName="Márton",
+                    LastName="Tél",
+                    BirthsDay=new DateTime(1989,02,01),
+                    IsWoman=true,
+                    Phonenumber="06307459201",
+                    Email="telMarton@gmail.com"
+                }
+            };
+
             // Students
             modelBuilder.Entity<Student>().HasData(students);
+            //Teachers
+            modelBuilder.Entity<Teacher>().HasData(teachers);
+            //Felhszanalok
+            modelBuilder.Entity<Felhasznalo>().HasData(felhsznalok);
         }
     }
 }
